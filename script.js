@@ -132,3 +132,8 @@ function createCards() {
 }
 
 createCards()
+
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = new bootstrap.Modal(document.getElementById('modal'));  // Inizializza la modal
+    modal.show();  // Mostra la modal
+});
