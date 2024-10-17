@@ -28,7 +28,7 @@ function createRadioButtons(questionId, index) {
     radioHTML += `
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="question${questionId}" id="${questionId}_${optionIndex}" value="${option}">
-                <label class="form-check-label personal-data-label" for="${questionId}_${optionIndex}">${option}</label>
+                <label class="form-check-label radio-label" for="${questionId}_${optionIndex}">${option}</label>
             </div>
         `;
   });
@@ -42,9 +42,9 @@ function createCards() {
 
   for (let i = 0; i < QUESTIONS.length; i++) {
     let questionHTML = `
-        <div class="row mb-5 question-row" data-id="${QUESTIONS[i].id}">
-            <div class="col-sm-2"></div>
-            <div class="col-lg-8">
+        <div class="row mb-2 question-row" data-id="${QUESTIONS[i].id}">
+            <div class="col-sm-3"></div>
+            <div class="col-lg-6">
                 <div class="card">
                     <h5 class="card-header">${QUESTIONS[i].text}</h5>
                     <div class="card-body">
@@ -54,7 +54,7 @@ function createCards() {
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-3"></div>
         </div>
         `;
     fullHTML += questionHTML;

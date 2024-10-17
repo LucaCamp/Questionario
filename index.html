@@ -13,33 +13,8 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <nav class="navbar bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
-      <div class="container-fluid d-flex direction-row">
-          <img
-            src="/assets/img/logoASP.png"
-            alt="Logo"
-            width="129"
-            height="73"
-            class="d-inline-block align-text-top"
-          />
-      <h3 class="text-white">Indagini sul personale dipendente</h3>
-    </nav>
-
-
-    <div class="container introduction" >
-      <h4>PREMESSA:</h4>
-      <p>
-        Nelle domande che seguono viene richiesto di esprimere la propria
-        valutazione attraverso una scala sempre identica che impiega 6 classi in
-        ordine crescente. L’intervistato per ogni domanda e/o affermazione
-        esprima il proprio grado di valutazione in relazione a quanto è
-        d’accordo o meno con l’affermazione o a quanto la ritiene importante o
-        non importante.
-      </p>
-    </div>
-    <h3 class="text-center">
-      Quanto si trova in accordo con le seguenti affermazioni?
-    </h3>
+    
+    
     <!-- Modal -->
     <div
       class="modal fade"
@@ -48,7 +23,7 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-center">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -63,8 +38,7 @@
           </div>
           <div class="modal-body">
             <p>
-              Gentile collega, La ringraziamo per aver scelto di partecipare a
-              questa indagine sul benessere organizzativo. Rispondere alle
+              Gentile collega, La ringraziamo per aver scelto di partecipare a questa indagine sul benessere organizzativo. Rispondere alle
               domande dovrebbe richiedere non più di 15-20 minuti.
             </p>
 
@@ -107,10 +81,60 @@
       </div>
     </div>
 
-    <div class="container"><h3 id="section-title">SEZIONE </h3></div>
     <div class="container mt-5">
+   <div class="row mb-5 " >
+            <div class="col-sm-3"></div>
+            <div class="col-lg-6 d-flex justify-content-center">
+                <div class="card" style="width: 24rem; border-radius: 10px;">
+  <img class="card-img-top" src="/assets/img/asp-agrigento.jpg" alt="Card image cap">
+</div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+   <div class="row mb-2 ">
+            <div class="col-sm-3"></div>
+            <div class="col-lg-6">
+                <div class="card">
+  <div class="card-body title-div">
+    <h3 class="title text-center">Indagini sul personale dipendente</h3>
+      <h5 class="mt-4 text-center" style="font-size: 14pt; font-weight: 700;">PREMESSA:</h5>
+      <p>
+        Nelle domande che seguono viene richiesto di esprimere la propria
+        valutazione attraverso una scala sempre identica che impiega 6 classi in
+        ordine crescente. L’intervistato per ogni domanda e/o affermazione
+        esprima il proprio grado di valutazione in relazione a quanto è
+        d’accordo o meno con l’affermazione o a quanto la ritiene importante o
+        non importante.
+      </p>
+
+      <p class="text-center" style="font-weight: bold;">
+      Quanto si trova in accordo con le seguenti affermazioni?
+      </p>
+  </div>
+</div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+
+        <div class="row mb-2 ">
+            <div class="col-sm-3"></div>
+            <div class="col-lg-6">
+                <div class="card">
+  <div class="card-body title-div" style="background-color: #9398f6; height: 60px;">
+    
+  </div>
+</div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
       <form id="question-form"></form>
-      <div class="d-flex justify-content-between m-4">
+
+      <div class="row mb-5 " >
+            <div class="col-sm-3"></div>
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-between mt-3">
         <button class="btn btn-primary" id="btn-indietro">Indietro</button>
         <button id="btn-submit" type="button" class="btn btn-primary" disabled>
           CONFERMA E INVIA
@@ -121,6 +145,11 @@
         
       </div>
     </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
+      
 
     <script type="module" src="/assets/js/script.js"></script>
     <script
