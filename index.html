@@ -13,11 +13,20 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <h1 class="text-center mt-3">Indagini sul personale dipendente</h1>
-    <h3 class="text-center">
-      Quanto si trova in accordo con le seguenti affermazioni?
-    </h3>
-    <div class="container">
+    <nav class="navbar bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
+      <div class="container-fluid d-flex direction-row">
+          <img
+            src="/assets/img/logoASP.png"
+            alt="Logo"
+            width="129"
+            height="73"
+            class="d-inline-block align-text-top"
+          />
+      <h3 class="text-white">Indagini sul personale dipendente</h3>
+    </nav>
+
+
+    <div class="container introduction" >
       <h4>PREMESSA:</h4>
       <p>
         Nelle domande che seguono viene richiesto di esprimere la propria
@@ -28,7 +37,9 @@
         non importante.
       </p>
     </div>
-
+    <h3 class="text-center">
+      Quanto si trova in accordo con le seguenti affermazioni?
+    </h3>
     <!-- Modal -->
     <div
       class="modal fade"
@@ -95,13 +106,19 @@
         </div>
       </div>
     </div>
+
+    <div class="container"><h3 id="section-title">SEZIONE </h3></div>
     <div class="container mt-5">
       <form id="question-form"></form>
       <div class="d-flex justify-content-between m-4">
         <button class="btn btn-primary" id="btn-indietro">Indietro</button>
+        <button id="btn-submit" type="button" class="btn btn-primary" disabled>
+          CONFERMA E INVIA
+        </button>
         <button id="btn-avanti" type="button" class="btn btn-primary">
           Avanti
         </button>
+        
       </div>
     </div>
 
