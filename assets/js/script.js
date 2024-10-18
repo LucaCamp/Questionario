@@ -33,7 +33,7 @@ function createRadioButtons(questionId, index) {
   QUESTIONS[index].options.forEach((option, optionIndex) => {
     radioHTML += `
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="question${questionId}" id="${questionId}_${optionIndex}" value="${option}">
+                <input class="form-check-input" type="radio" name="question${questionId}" id="${questionId}_${optionIndex}" value="${option}" required>
                 <label class="form-check-label radio-label" for="${questionId}_${optionIndex}">${option}</label>
             </div>
         `;
@@ -88,7 +88,7 @@ function showSection(letter) {
   updateSectionTitle(letter);
 }
 
-//Abilita il pulsante indietro nella prima sezione e avanti nell'ultima
+//Disabilita il pulsante indietro nella prima sezione e avanti nell'ultima
 function updateButtons() {
   document.getElementById("btn-indietro").disabled = currentSectionIndex === 0;
   document.getElementById("btn-avanti").disabled =
@@ -99,8 +99,17 @@ function updateButtons() {
 //Event listener Btn avanti
 document.getElementById("btn-avanti").addEventListener("click", function () {
   if (currentSectionIndex < sections.length - 1) {
-    currentSectionIndex++;
-    showSection(sections[currentSectionIndex]);
+    const sectionCompleted = validateSectionCompletion();
+
+    if (sectionCompleted) {
+      currentSectionIndex++;
+      showSection(sections[currentSectionIndex]);
+    } else {
+      showBootstrapAlert(
+        "Per favore, rispondi a tutte le domande prima di procedere.",
+        "danger"
+      );
+    }
   }
 });
 //Event listener Btn indietro
@@ -113,3 +122,81 @@ document.getElementById("btn-indietro").addEventListener("click", function () {
 
 // Mostra la prima sezione all'avvio
 showSection(sections[currentSectionIndex]);
+
+function validateSectionCompletion() {
+  const filteredQuestions = document.querySelectorAll(
+    `.question-row[data-id^="${sections[currentSectionIndex]}"]`
+  );
+
+  let allAnswered = true;
+
+  filteredQuestions.forEach((question) => {
+    const questionId = question.getAttribute("data-id");
+    const selectedOption = document.querySelector(
+      `input[name="question${questionId}"]:checked`
+    );
+    if (!selectedOption) {
+      allAnswered = false;
+    }
+  });
+
+  return allAnswered;
+}
+
+function showBootstrapAlert(message, type = "danger") {
+  const alertContainer = document.getElementById("alert-container");
+  alertContainer.innerHTML = "";
+
+  const alertDiv = document.createElement("div");
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show d-flex`;
+  alertDiv.setAttribute("role", "alert");
+
+  alertDiv.innerHTML = `
+    ${message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  `;
+
+  alertContainer.appendChild(alertDiv);
+  setTimeout(() => {
+    alertDiv.remove();
+  }, 5000);
+}
+
+// Funzione per validare che tutte le domande siano state risposte
+function validateAllQuestions() {
+  return Array.from(document.querySelectorAll(".question-row")).every(
+    (question) => {
+      const questionId = question.getAttribute("data-id");
+      const selectedOption = document.querySelector(
+        `input[name="question${questionId}"]:checked`
+      );
+      return selectedOption !== null;
+    }
+  );
+}
+
+function collectResponses() {
+  const formData = new FormData(questionForm); // Crea un oggetto FormData dal modulo
+  const responses = {};
+
+  // Converte FormData in un oggetto
+  formData.forEach((value, key) => {
+    responses[key] = value;
+  });
+
+  console.log(JSON.stringify(responses, null, 2));
+}
+
+// Event listener per il pulsante di submit
+document.getElementById("btn-submit").addEventListener("click", function () {
+  const allAnswered = validateAllQuestions();
+
+  if (allAnswered) {
+    collectResponses();
+  } else {
+    showBootstrapAlert(
+      "Per favore, rispondi a tutte le domande prima di inviare.",
+      "danger"
+    );
+  }
+});
