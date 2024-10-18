@@ -104,6 +104,10 @@ document.getElementById("btn-avanti").addEventListener("click", function () {
     if (sectionCompleted) {
       currentSectionIndex++;
       showSection(sections[currentSectionIndex]);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     } else {
       showBootstrapAlert(
         "Per favore, rispondi a tutte le domande prima di procedere.",
@@ -162,7 +166,6 @@ function showBootstrapAlert(message, type = "danger") {
   }, 5000);
 }
 
-// Funzione per validare che tutte le domande siano state risposte
 function validateAllQuestions() {
   return Array.from(document.querySelectorAll(".question-row")).every(
     (question) => {
