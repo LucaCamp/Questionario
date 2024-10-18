@@ -443,3 +443,22 @@ export const QUESTIONS = [
     options: ["Dirigente", "Non dirigente"],
   },
 ];
+
+export const SECTION_TITLE = {
+  A: "Sicurezza e salute sul luogo di lavoro e stress lavoro correlato",
+  B: "Le discriminazioni",
+  C: "L’equità nella mia amministrazione",
+  D: "Carriera e sviluppo professionale",
+  E: "Il mio lavoro",
+  F: "I miei colleghi",
+  G: "Il contesto del mio lavoro",
+  H: "Il senso di appartenenza",
+  I: "L’immagine della mia amministrazione",
+  Q: "Importanza degli ambiti di indagine - Quanto considera importanti per il suo benessere organizzativo i seguenti ambiti?",
+  L: "La mia organizzazione",
+  M: "Le mie performance",
+  N: "Il funzionamento del sistema",
+  O: "Il mio capo e la mia crescita",
+  P: "Il mio capo e l’equità",
+  R: "Dati anagrafici",
+};

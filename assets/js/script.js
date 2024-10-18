@@ -1,4 +1,4 @@
-import { QUESTIONS } from "./data.js";
+import { QUESTIONS, SECTION_TITLE } from "./data.js";
 
 //Caricamento Modal
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,6 +19,12 @@ QUESTIONS.forEach((question) => {
 });
 
 sections = Array.from(sections);
+
+let sectionTitle = document.getElementById("section-title");
+
+function updateSectionTitle(letter) {
+  sectionTitle.innerHTML = SECTION_TITLE[letter];
+}
 
 //crea i radio button per ogni domanda
 function createRadioButtons(questionId, index) {
@@ -79,6 +85,7 @@ function showSection(letter) {
   });
 
   updateButtons();
+  updateSectionTitle(letter);
 }
 
 //Abilita il pulsante indietro nella prima sezione e avanti nell'ultima
@@ -86,6 +93,7 @@ function updateButtons() {
   document.getElementById("btn-indietro").disabled = currentSectionIndex === 0;
   document.getElementById("btn-avanti").disabled =
     currentSectionIndex === sections.length - 1;
+  document.getElementById("btn-submit").disabled = currentSectionIndex < 15;
 }
 
 //Event listener Btn avanti
