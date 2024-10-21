@@ -93,7 +93,8 @@ function updateButtons() {
   document.getElementById("btn-indietro").disabled = currentSectionIndex === 0;
   document.getElementById("btn-avanti").disabled =
     currentSectionIndex === sections.length - 1;
-  document.getElementById("btn-submit").disabled = currentSectionIndex < 15;
+  document.getElementById("btn-submit").disabled =
+    currentSectionIndex < sections.length - 1;
 }
 
 //Event listener Btn avanti
